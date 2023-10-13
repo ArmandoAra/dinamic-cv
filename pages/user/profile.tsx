@@ -3,14 +3,14 @@ import React from 'react'
 //Components
 import { Layout } from '@/components/layouts/Layout';
 
-const Login = () => {
+const Profile = () => {
     return (
         <>
-            <Layout title="Login">
-                <h1>Login</h1>
+            <Layout title="Profile Name">
+                <h1>Armando</h1>
             </Layout>
         </>
     )
 }
 
-export default Login;
+export default Profile;

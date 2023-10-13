@@ -19,3 +19,5 @@ color_1: "111F4D" <!--Azul Oscuro para para el fondo-->
 color_2: "F2F4F7" <!--Casi Blanco-->
 color_3: "E43A19" <!-- Rojito Mamey parecido al modo claro -->
 color_4: "020205" <!-- Negro NavBar -->
+
+<!-- Logo (sitka Display font) -->
