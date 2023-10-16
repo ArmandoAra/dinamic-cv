@@ -21,3 +21,7 @@ color_3: "E43A19" <!-- Rojito Mamey parecido al modo claro -->
 color_4: "020205" <!-- Negro NavBar -->
 
 <!-- Logo (sitka Display font) -->
+
+Esta creado en principio para artista en el mundo del espectaculo para poder documentar los ultimos lugares donde se ha trabajado
+y compartir tambien las fechas libres, dando la oportunidad de poder ser contactado en caso de ser necesitado dependiendo de la
+disciplina artistica en la que se especializa.

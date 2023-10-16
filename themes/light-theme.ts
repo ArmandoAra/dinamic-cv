@@ -1,25 +1,24 @@
 import { createTheme } from "@mui/material";
-import { grey, red } from "@mui/material/colors";
-import { Component } from "react";
+import { red } from "@mui/material/colors";
 
 
 export const lightTheme = createTheme({
     palette: {
         mode: 'light',
         background: {
-            default: '#dadada',
+            default: '#B9FFF8',
         },
         primary: {
-            main: '#4a148c',
+            main: '#483c3c',
         },
         secondary: {
-            main: '#19859b',
+            main: '#fac4a1',
         },
         error: {
             main: red[500],
         }
     },
-    // Para estandarizar como se ven los componentes de material-ui
+    // Para estandarizar como se ven los componentes de material-ui(Se especifica el nombre del componente con el prefijo Mui)
     components: {
         MuiAppBar: {
             defaultProps: {
@@ -27,8 +26,15 @@ export const lightTheme = createTheme({
             },
             styleOverrides: {
                 root: {
-                    background: '#837f85',
-                    color: '#070202',
+                    background: '#FF9551',
+                },
+            },
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    fontFamily: 'PT Sans, sans-serif',
+                    textShadow: '2px 3px 5px #000000',
                 },
             },
         },

@@ -1,6 +1,6 @@
 import { createTheme, Typography } from '@mui/material';
 import { red } from "@mui/material/colors";
-import { Color } from '../../next-pokemon/interfaces/descriptionData';
+
 
 
 export const darkTheme = createTheme({

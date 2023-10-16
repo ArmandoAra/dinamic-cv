@@ -10,14 +10,17 @@ import { UIProvider } from '@/context/ui'
 
 //Temas
 import { lightTheme } from '../themes';
+import { AuthProvider } from '@/context';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <UIProvider>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </UIProvider>
+    <AuthProvider>
+      <UIProvider>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </UIProvider>
+    </AuthProvider>
   )
 }

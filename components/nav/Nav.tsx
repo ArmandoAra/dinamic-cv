@@ -3,39 +3,36 @@ import React, { useContext, useState } from 'react'
 //Next
 import Image from 'next/image'
 import router, { useRouter } from 'next/router';
+import Link from 'next/link';
 
 //Context
 import { UIContext } from '@/context/ui';
 
+//Styles
+import '../../styles/nav.module.css';
+
 //Components
-import { ClearOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material';
-import { AppBar, Toolbar, Box, Typography, Button, Input, InputAdornment, IconButton, Badge } from '@mui/material';
-import Link from 'next/link';
+import { ClearOutlined, SearchOutlined } from '@mui/icons-material';
+import { AppBar, Toolbar, Box, Button, Input, InputAdornment, IconButton } from '@mui/material';
 
 const Nav = () => {
 
-    // Haciendo que los botones se modifiquen dependiendo en la url que estamos
+    //Obteniendo la ruta actual
     const { asPath } = useRouter()
 
     //Manejando el menu lateral
     const { openSideBar } = useContext(UIContext)
-
-
     const { sideMenuOpen, closeSideBar } = useContext(UIContext)
 
-
-    const navigateTo = (url: string) => {
-        router.push(url);
-        closeSideBar();
-    }
-
-    //value y onChange del input respectivamete para ir controlando el valor del input
+    //Buscador
     const [searchTerm, setSearchTerm] = useState('')
-    const [isSearchVisible, setIsSearchVisible] = useState(false); //Para mostrar el input de busqueda en pantallas grandes
+    const [isSearchVisible, setIsSearchVisible] = useState(false);
 
+    //Funcion para navegar a una pagina(cuando hagamos la api de busqueda)
+    const navigateTo = (url: string) => { router.push(url); closeSideBar(); }
+    //Implementar cuando tengamos la api lista con los datos
     const onSearchTerm = () => {
         if (searchTerm.trim().length === 0) return; //Evaluamos que no este vacio el campo de busqueda
-
         navigateTo(`/search/${searchTerm}`);
     }
 
@@ -58,26 +55,46 @@ const Nav = () => {
                     alignContent: 'center',
                     textDecoration: 'none'
                 }}
-                    className='fadeIn'
+                    className='fade'
                 >
 
                     <Link href='/' >
-                        <Button color={(asPath === '/') ? 'primary' : 'info'} >Home</Button>
+                        <Button
+                            color={(asPath === '/') ? 'primary' : 'secondary'}
+                            className='fade'
+                        >
+                            Home
+                        </Button>
                     </Link>
 
 
-                    <Link href='/login'>
-                        <Button color={(asPath === '/login') ? 'primary' : 'info'} >Login</Button>
+                    <Link href='/auth/login'>
+                        <Button
+                            color={(asPath === '/auth/login') ? 'primary' : 'secondary'}
+                            className='fade'
+                        >
+                            Login
+                        </Button>
                     </Link>
 
 
-                    <Link href='/register'>
-                        <Button color={(asPath === '/register') ? 'primary' : 'info'}>Register</Button>
+                    <Link href='/auth/register'>
+                        <Button
+                            color={(asPath === '/auth/register') ? 'primary' : 'secondary'}
+                            className='fade'
+                        >
+                            Register
+                        </Button>
                     </Link>
 
 
                     <Link href='/user/profile'>
-                        <Button color={(asPath === '/user/profile') ? 'primary' : 'info'}>My CV</Button>
+                        <Button
+                            color={(asPath === '/user/profile') ? 'primary' : 'secondary'}
+                            className='fadeIn'
+                        >
+                            My CV
+                        </Button>
                     </Link>
 
                 </Box>
