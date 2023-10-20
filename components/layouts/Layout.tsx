@@ -6,6 +6,9 @@ import Head from "next/head"
 //Components
 import Nav from "../nav/Nav"
 import Menu from '../nav/Menu';
+import { Box } from "@mui/material";
+
+
 
 
 //Interface
@@ -16,8 +19,7 @@ interface LayoutProps {
 
 export const Layout: FC<LayoutProps> = ({ title, children }) => {
     return (
-
-        <div>
+        <>
             <Head>
                 <title>{title ? title : 'Dinamic CV'}</title>
                 <meta name="description" content="Dinamic Create Curriculum Vitae" />
@@ -35,12 +37,12 @@ export const Layout: FC<LayoutProps> = ({ title, children }) => {
 
             {/* TODO: Quitar el estilo en linea */}
             <main style={{
-                margin: '80px auto',
-                maxWidth: '1440px',
-                padding: '0px 30px'
+                display: 'flex',
+                height: '100vh',
+                marginTop: '15vh',
             }}>
                 {children}
             </main>
-        </div>
+        </>
     )
 }

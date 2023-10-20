@@ -1,3 +1,3 @@
 
 export { default as UserModel } from './User';
-// export { default as ProfilesModel } from './Profiles';
+export { default as CurriculumModel } from './Curriculum';

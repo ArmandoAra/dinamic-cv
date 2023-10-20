@@ -1,5 +1,5 @@
 import { db, initialData } from '@/database'
-import { UserModel } from '@/models'
+import { UserModel, CurriculumModel } from '@/models'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -18,6 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     //Insertamos los usuarios
     await UserModel.deleteMany()
     await UserModel.insertMany(initialData.users)
+    await CurriculumModel.insertMany(initialData.curriculum)
 
 
     // En este espacio podemos hacer las operaciones que queramos

@@ -46,10 +46,10 @@ const RegisterPage = () => {
     return (
         <AuthLayout title={'Ingresar'}>
             <form onSubmit={handleSubmit(onRegisterForm)}>
-                <Box sx={{ width: 350, padding: '10px 20px' }}>
-                    <Grid container spacing={2}>
+                <Box sx={{ width: '50vw', marginTop: '20vw', display: 'flex', justifyContent: 'center', textAlign: 'center', height: '90vh' }}>
+                    <Grid container spacing={2} display={'flex'} alignContent={'center'} sx={{ width: { xs: '80vw', sm: '60vw' } }}>
                         <Grid item xs={12}>
-                            <Typography variant='h1' component="h1">Crear cuenta</Typography>
+                            <Typography variant='h4' component="h4">Create Account</Typography>
                         </Grid>
 
 
@@ -69,6 +69,7 @@ const RegisterPage = () => {
                                 label="Name"
                                 variant="filled"
                                 fullWidth
+                                color='secondary'
                                 {...register('name', {
                                     required: 'Name required',
                                     minLength: { value: 2, message: 'Min 2 characteres' }
@@ -82,6 +83,7 @@ const RegisterPage = () => {
                                 label="Email"
                                 variant="filled"
                                 fullWidth
+                                color='secondary'
                                 {...register('email', {
                                     required: 'Email required',
                                     validate: (value) => validations.isEmail(value),
@@ -96,6 +98,25 @@ const RegisterPage = () => {
                                 type='password'
                                 variant="filled"
                                 fullWidth
+                                color='secondary'
+                                {...register('password', {
+                                    required: 'Password required',
+                                    minLength: { value: 6, message: 'Min 6 characteres' }
+
+                                })}
+                                error={!!errors.password}
+                                helperText={errors.password?.message}
+                            />
+
+                        </Grid>
+
+                        <Grid item xs={12}>
+                            <TextField
+                                label="Password-Confirm"
+                                type='password'
+                                variant="filled"
+                                fullWidth
+                                color='secondary'
                                 {...register('password', {
                                     required: 'Password required',
                                     minLength: { value: 6, message: 'Min 6 characteres' }
@@ -110,12 +131,13 @@ const RegisterPage = () => {
                         <Grid item xs={12}>
                             <Button
                                 type='submit'
+                                variant="contained"
                                 color="secondary"
                                 className='circular-btn'
                                 size='large'
                                 fullWidth
                             >
-                                Ingresar
+                                Register
                             </Button>
                         </Grid>
 

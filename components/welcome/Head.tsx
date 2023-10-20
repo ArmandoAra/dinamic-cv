@@ -17,6 +17,7 @@ const home_Styles = {
     // Componente Hijo 1
     head_title: {
         'display': 'flex',
+        'flexDirection': 'column',
         'width': '50vw',
         'alignItems': 'flex-end',
         'justifyContent': 'flex-end',
@@ -28,20 +29,20 @@ const home_Styles = {
 
     // Componente Hijo 2
     head_text: {
-        'width': '50vw',
+        'width': { xs: '80vw', sm: '50vw' },
         'fontFamily': 'sans-serif',
-        'fontSize': { xs: '2vw', sm: '1.4vw' },
+        'fontSize': { xs: '4vw', sm: '1.4vw' },
         'display': 'flex',
-        'boxShadow': '0px 4px 0px #ff9551',
-        'paddingLeft': { xs: '10px', sm: '30px' },
-        'paddingTop': { xs: '10px', sm: '0px' },
+        'boxShadow': '0px 64px 300px #ff9551',
         'alignItems': 'flex-end',
+        'padding': { xs: '2rem', sm: '30px' },
     },
 
     //Texto del componente Hijo 2
     typography_h1: {
         'textAlign': 'end',
-        'fontSize': { xs: '8vw', sm: '5vw' },
+        'fontSize': { xs: '13vw', sm: '5vw' },
+        'color': "#FF9551"
     }
 }
 
@@ -51,13 +52,13 @@ const Head = () => {
         <Container sx={home_Styles.container} >
 
             <Box sx={home_Styles.head_title} >
-                <Typography variant="h1" sx={home_Styles.typography_h1}>
-                    Dinamic <br /> Curriculum <br /> Vitae
-                </Typography>
+                <Typography variant="h3" >Dinamic</Typography>
+                <Typography variant="h1" sx={home_Styles.typography_h1}>Curriculum</Typography>
+                <Typography variant="h3" >Vitae</Typography>
             </Box>
 
             <Box sx={home_Styles.head_text}>
-                <p >
+                <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, reiciendis laudantium
                     nobis recusandae illo aliquid expedita! Repellendus, in. Beatae laborum ipsam sit quis
                     vitae sed earum praesentium deleniti asperiores! Molestias?

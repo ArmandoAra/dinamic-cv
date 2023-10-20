@@ -58,10 +58,10 @@ const LoginPage = () => {
     return (
         <AuthLayout title={'Ingresar'}>
             <form onSubmit={handleSubmit(onLoginUser)}>
-                <Box sx={{ width: 350, padding: '10px 20px' }}>
-                    <Grid container spacing={2}>
+                <Box sx={{ width: '50vw', padding: '10px 20px', marginTop: '28vw', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+                    <Grid container spacing={2} display={'flex'} alignContent={'center'} sx={{ width: { xs: '80vw', sm: '60vw' } }}>
                         <Grid item xs={12}>
-                            <Typography variant='h1' component="h1">Iniciar Sesión</Typography>
+                            <Typography variant='h3' component="h3" alignContent={'center'}>Log In</Typography>
                             {/* Mensaje de error si no se puede logear */}
 
                             <Chip
@@ -80,9 +80,10 @@ const LoginPage = () => {
                         <Grid item xs={12}>
                             <TextField
                                 type='email'
-                                label="Correo"
+                                label="Email"
                                 variant="filled"
                                 fullWidth
+                                color='secondary'
                                 {...register('email', {
                                     required: 'Email required',
                                     validate: (value) => validations.isEmail(value),
@@ -93,10 +94,11 @@ const LoginPage = () => {
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                label="Contraseña"
+                                label="Password"
                                 type='password'
                                 variant="filled"
                                 fullWidth
+                                color='secondary'
                                 {...register('password', {
                                     required: 'Password required',
                                     minLength: { value: 6, message: 'Min 6 characteres' }
@@ -109,12 +111,12 @@ const LoginPage = () => {
 
                         <Grid item xs={12}>
                             <Button
+                                variant="contained"
                                 type='submit' //para que el boton haga submit
                                 color="secondary"
-                                className='circular-btn'
-                                size='large'
-                                fullWidth>
-                                Ingresar
+                                fullWidth
+                            >
+                                Log in
                             </Button>
                         </Grid>
 

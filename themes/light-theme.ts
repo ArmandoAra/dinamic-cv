@@ -20,6 +20,23 @@ export const lightTheme = createTheme({
     },
     // Para estandarizar como se ven los componentes de material-ui(Se especifica el nombre del componente con el prefijo Mui)
     components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+                main {
+                    display: flex;
+                    flex-direction: column;
+                    
+                }
+            `,
+        },
+        MuiGrid: {
+            styleOverrides: {
+                root: {
+                    marginLeft: '0px',
+                    width: '200px'
+                },
+            },
+        },
         MuiAppBar: {
             defaultProps: {
                 elevation: 0,

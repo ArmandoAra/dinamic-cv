@@ -12,6 +12,8 @@ import { UIProvider } from '@/context/ui'
 import { lightTheme } from '../themes';
 import { AuthProvider } from '@/context';
 
+import '@/styles/globals.css'
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
