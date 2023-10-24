@@ -34,7 +34,7 @@ export const connectDB = async () => {
         await mongoose.connect(mongo_url)
         mongoConnection.isConnected = 1;
     } catch (error) {
-        return console.log("Error to connect whit db")
+        return console.log(error)
     }
 
 

@@ -33,7 +33,6 @@ export const lightTheme = createTheme({
             styleOverrides: {
                 root: {
                     marginLeft: '0px',
-                    width: '200px'
                 },
             },
         },
@@ -52,6 +51,16 @@ export const lightTheme = createTheme({
                 root: {
                     fontFamily: 'PT Sans, sans-serif',
                     textShadow: '2px 3px 5px #000000',
+                },
+            },
+        },
+        MuiTableCell: {
+            styleOverrides: {
+                root: {
+                    fontFamily: 'PT Sans, sans-serif',
+                    padding: '0px 10px',
+                    borderBottom: 'none',
+
                 },
             },
         },

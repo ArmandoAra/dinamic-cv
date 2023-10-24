@@ -3,11 +3,14 @@ import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { FormContext } from '@/context/form';
 import CurriculumForm from '@/components/curriculum/curriculumForm';
+import Nav from '@/components/nav/Nav';
+import Footer from '@/components/footer/Footer';
 
 interface formCurriculumData {
     name: string;
     surname: string;
     age: number;
+    img: string;
     telephone: number;
     email: string;
     country: string;
@@ -30,13 +33,13 @@ const Form = () => {
 
     const onSubmitCurriculumForm = async ({
         name, surname, age, telephone, email,
-        country, acts, images, formation,
+        country, acts, images, formation, img,
         description, skills, workExperience, actualWorkPlace
     }: formCurriculumData) => {
 
         setShowError(false)
         const { hasError, message } = await createCurriculum(
-            name, surname, age, telephone, email,
+            name, surname, age, telephone, email, img,
             country, acts, images, formation,
             description, skills, workExperience, actualWorkPlace
         );
@@ -57,7 +60,9 @@ const Form = () => {
 
     return (
         <div>
+            <Nav />
             <CurriculumForm />
+            <Footer />
         </div>
     )
 }

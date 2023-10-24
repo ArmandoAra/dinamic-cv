@@ -6,6 +6,7 @@ export interface ICurriculumForm {
     age: number;
     telephone: number;
     email: string;
+    img: string;
     country: string;
     acts: string[];
     images: string[];

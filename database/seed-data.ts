@@ -7,6 +7,7 @@ interface SeedCurriculum {
     age: number;
     telephone: number;
     email: string;
+    img: string;
     country: string;
     acts: string[];
     images: string[];
@@ -48,6 +49,12 @@ export const initialData: SeedData = {
             password: bcrypt.hashSync('123456', 10),
             role: 'user'
         },
+        {
+            name: 'Carlos Garcia',
+            email: 'carlos@email.com',
+            password: bcrypt.hashSync('123456', 10),
+            role: 'user'
+        },
     ],
     curriculum: [
         {
@@ -56,6 +63,7 @@ export const initialData: SeedData = {
             age: 25,
             telephone: 123456789,
             email: 'armando@email.com',
+            img: 'https://i.imgur.com/0Z3XQdP.jpeg',
             country: 'Mexico',
             acts: ['Developer', 'Designer'],
             images: ['https://i.imgur.com/0Z3XQdP.jpeg'],
@@ -71,6 +79,7 @@ export const initialData: SeedData = {
             age: 25,
             telephone: 123456789,
             email: 'eduardo@gmail.com',
+            img: 'https://i.imgur.com/0Z3XQdP.jpeg',
             country: 'Mexico',
             acts: ['Developer', 'Designer'],
             images: ['https://i.imgur.com/0Z3XQdP.jpeg'],
@@ -86,6 +95,7 @@ export const initialData: SeedData = {
             age: 25,
             telephone: 123456789,
             email: 'juan@mail.com',
+            img: 'https://i.imgur.com/0Z3XQdP.jpeg',
             country: 'Mexico',
             acts: ['Developer', 'Designer'],
             images: ['https://i.imgur.com/0Z3XQdP.jpeg'],

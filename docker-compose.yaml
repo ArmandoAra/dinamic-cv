@@ -1,7 +1,7 @@
 services:
-  teslodb:
-    image: mongo:5.0.0
-    container_name: dinamic-cv-database
+  dinamic-cv: 
+    image: mongo:7.0.2
+    container_name: dinamic-cv
     ports:
       - 27017:27017
     volumes:
