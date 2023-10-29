@@ -111,14 +111,61 @@ const CurriculumForm = () => {
                         architecto, asperiores ex atque necessitatibus. Maxime numquam amet, excepturi optio nesciunt dolor est accusantium.
                     </Typography>
                 </Grid>
-                <Grid item xs={12} sm={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}  >
-                    <Grid display={'flex'}>
-                        <Grid xs={6} >Imagen</Grid>
-                        <Grid xs={6} >Imagen</Grid>
+                <Grid item xs={12} gap={'5px'} sm={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: '0px' }}  >
+
+                    <Grid display={'flex'} gap={'5px'} >
+                        <Grid xs={6} ><Image src={'/../../static/user/profile.jpg'} alt='User Profile Image'
+                            style={{
+                                width: '100px',
+                                height: '100px',
+                                objectFit: 'cover',
+                                borderRadius: '100% 0% 0% 0%',
+                                boxShadow: '0px 0px 0px 5px #ff9551',
+                            }}
+                            width={300}
+                            height={300}
+                        />
+                        </Grid>
+
+                        <Grid xs={6} ><Image src={'/../../static/user/profile.jpg'} alt='User Profile Image'
+                            style={{
+                                width: '100px',
+                                height: '100px',
+                                objectFit: 'cover',
+                                borderRadius: '0% 100% 0% 0%',
+                                boxShadow: '0px 0px 0px 5px #ff9551',
+                            }}
+                            width={300}
+                            height={300}
+                        />
+                        </Grid>
                     </Grid>
-                    <Grid display={'flex'}>
-                        <Grid xs={6} >Imagen</Grid>
-                        <Grid xs={6} >Imagen</Grid>
+
+                    <Grid display={'flex'} gap={'5px'}>
+                        <Grid xs={6} ><Image src={'/../../static/user/profile.jpg'} alt='User Profile Image'
+                            style={{
+                                width: '100px',
+                                height: '100px',
+                                borderRadius: '0% 0% 0% 100%',
+                                boxShadow: '0px 0px 0px 5px #ff9551',
+                                objectFit: 'cover',
+                            }}
+                            width={300}
+                            height={300}
+                        />
+                        </Grid>
+                        <Grid xs={6} ><Image src={'/../../static/user/profile.jpg'} alt='User Profile Image'
+                            style={{
+                                width: '100px',
+                                height: '100px',
+                                borderRadius: '0% 0% 100% 0%',
+                                boxShadow: '0px 0px 0px 5px #ff9551',
+                                objectFit: 'cover',
+                            }}
+                            width={300}
+                            height={300}
+                        />
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
@@ -267,7 +314,7 @@ const CurriculumForm = () => {
                 </Grid>
             </Grid>
 
-        </Box>
+        </Box >
 
     )
 
