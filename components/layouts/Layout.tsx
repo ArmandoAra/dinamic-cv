@@ -7,6 +7,7 @@ import Head from "next/head"
 import Nav from "../nav/Nav"
 import Menu from '../nav/Menu';
 import { Box } from "@mui/material";
+import { IUser } from "@/interfaces";
 
 
 

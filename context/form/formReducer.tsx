@@ -4,6 +4,7 @@ import { CurriculumState } from '.';
 
 type AuthActionType =
     | { type: 'ADD-CURRICULUM', payload: ICurriculumForm }
+    | { type: 'GET-CURRICULUM', payload: ICurriculumForm }
 
 
 export const formReducer = (state: CurriculumState, action: AuthActionType): CurriculumState => {
@@ -13,7 +14,13 @@ export const formReducer = (state: CurriculumState, action: AuthActionType): Cur
             // regresar un nuevo estado
             return {
                 ...state,
-                curriculums: [...state.curriculums, action.payload]
+                curriculum: action.payload
+            }
+        case 'GET-CURRICULUM':
+            // regresar un nuevo estado
+            return {
+                ...state,
+                curriculum: action.payload
             }
 
         default:

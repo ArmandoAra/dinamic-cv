@@ -14,6 +14,7 @@ import '../../styles/nav.module.css';
 //Components
 import { ClearOutlined, SearchOutlined } from '@mui/icons-material';
 import { AppBar, Toolbar, Box, Button, Input, InputAdornment, IconButton } from '@mui/material';
+import { AuthContext } from '@/context';
 
 const Nav = () => {
 
@@ -24,17 +25,16 @@ const Nav = () => {
     const { openSideBar } = useContext(UIContext)
     const { sideMenuOpen, closeSideBar } = useContext(UIContext)
 
+    // Manejando el estado de autenticacion
+    const { isLoggedIn, logoutUser } = useContext(AuthContext)
+
     //Buscador
     const [searchTerm, setSearchTerm] = useState('')
     const [isSearchVisible, setIsSearchVisible] = useState(false);
 
     //Funcion para navegar a una pagina(cuando hagamos la api de busqueda)
     const navigateTo = (url: string) => { router.push(url); closeSideBar(); }
-    //Implementar cuando tengamos la api lista con los datos
-    const onSearchTerm = () => {
-        if (searchTerm.trim().length === 0) return; //Evaluamos que no este vacio el campo de busqueda
-        navigateTo(`/search/${searchTerm}`);
-    }
+
 
     return (
         <AppBar>
@@ -57,7 +57,7 @@ const Nav = () => {
                 }}
                     className='fade'
                 >
-
+                    {/* Home */}
                     <Link href='/' >
                         <Button
                             color={(asPath === '/') ? 'primary' : 'secondary'}
@@ -67,75 +67,62 @@ const Nav = () => {
                         </Button>
                     </Link>
 
+                    {isLoggedIn ?
+                        <>
+                            <Link href='/user/profile'>
+                                <Button
+                                    color={(asPath === '/user/profile') ? 'primary' : 'secondary'}
+                                    className='fadeIn'
+                                >
+                                    My CV
+                                </Button>
+                            </Link>
+                            {/* Log out */}
+                            <Link href='/'>
+                                <Button
+                                    variant="outlined"
+                                    color="error"
+                                    onClick={() => logoutUser()}
+                                >
+                                    Log out
+                                </Button>
+                            </Link>
+                        </>
 
-                    <Link href='/auth/login'>
-                        <Button
-                            color={(asPath === '/auth/login') ? 'primary' : 'secondary'}
-                            className='fade'
-                        >
-                            Login
-                        </Button>
-                    </Link>
+                        :
+                        <>
+                            <Link href='/auth/login'>
+                                <Button
+                                    color={(asPath === '/auth/login') ? 'primary' : 'secondary'}
+                                    className='fade'
+                                >
+                                    Login
+                                </Button>
+                            </Link>
 
 
-                    <Link href='/auth/register'>
-                        <Button
-                            color={(asPath === '/auth/register') ? 'primary' : 'secondary'}
-                            className='fade'
-                        >
-                            Register
-                        </Button>
-                    </Link>
+                            <Link href='/auth/register'>
+                                <Button
+                                    color={(asPath === '/auth/register') ? 'primary' : 'secondary'}
+                                    className='fade'
+                                >
+                                    Register
+                                </Button>
+                            </Link>
+                        </>
 
 
-                    <Link href='/user/profile'>
-                        <Button
-                            color={(asPath === '/user/profile') ? 'primary' : 'secondary'}
-                            className='fadeIn'
-                        >
-                            My CV
-                        </Button>
-                    </Link>
+                    }
+
+
+
+
 
                 </Box>
 
 
                 <Box flex={1} />
-                {/* Pantallas  grandes */}
-                {
-                    isSearchVisible
-                        ? (
-                            <Input
-                                sx={{ display: { xs: 'none', sm: 'flex' } }}
-                                className='fadeIn'
-                                autoFocus
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                onKeyPress={(e) => e.key === 'Enter' ? onSearchTerm() : null}
-                                type='text'
-                                placeholder="Buscar..."
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={() => setIsSearchVisible(false)}
-                                        >
-                                            <ClearOutlined />
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
-                        )
-                        :
-                        (
-                            <IconButton
-                                onClick={() => setIsSearchVisible(true)}
-                                className="fadeIn"
-                                sx={{ display: { xs: 'none', sm: 'flex' } }}
-                            >
-                                <SearchOutlined />
-                            </IconButton>
-                        )
-                }
+
                 {/* Small Screens */}
                 <IconButton
                     sx={{ display: { xs: 'flex', sm: 'none' } }}

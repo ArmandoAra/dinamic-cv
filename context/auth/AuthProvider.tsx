@@ -1,5 +1,5 @@
 
-import { FC, use, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { AuthContext, authReducer, } from '..';
 
 import Cookies from 'js-cookie';
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             try {
                 const { data } = await cvApi.get('/user/validate-token');
                 const { token, user } = data;
-                Cookies.set('token', token);
+                Cookies.set('token', token, { expires: 1, secure: true, sameSite: 'lax' });
                 dispatch({ type: 'LOGIN', payload: user });
             } catch (error) {
                 Cookies.remove('token');
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         try {
             const { data } = await cvApi.post('/user/login', { email, password });
             const { token, user } = data;
-            Cookies.set('token', token);
+            Cookies.set('token', token, { expires: 1, secure: true, sameSite: 'lax' });
             dispatch({ type: 'LOGIN', payload: user });
             return true;
         } catch (error) {
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         try {
             const { data } = await cvApi.post('/user/register', { name, email, password });
             const { token, user } = data;
-            Cookies.set('token', token);
+            Cookies.set('token', token, { expires: 1, secure: true, sameSite: 'lax' });
             dispatch({ type: 'LOGIN', payload: user });
             return {
                 hasError: false,
@@ -88,6 +88,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }
     }
 
+    const logoutUser = () => {
+        Cookies.remove('token');
+        dispatch({ type: 'LOGOUT' });
+    }
+
 
     return (
         <AuthContext.Provider value={{
@@ -96,6 +101,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
             loginUser,
             registerUser,
+            logoutUser,
         }}>
             {children}
         </AuthContext.Provider>

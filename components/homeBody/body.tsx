@@ -77,12 +77,12 @@ const HomeBody = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Item container columnSpacing={{ xs: 1, sm: 2 }} sx={body_Styles.item_container}  >
-                <Grid xs={6} sx={body_Styles.grid_container}>
+                <Grid item xs={6} sx={body_Styles.grid_container}>
                     <TableContainer >
                         <Table >
                             <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow key={row.name} >
+                                {rows.map((row, index) => (
+                                    <TableRow key={index} >
                                         <TableCell sx={body_Styles.tableCell_symbol}>{row.name}</TableCell>
                                         <TableCell sx={body_Styles.tableCell_text}>{row.calories}</TableCell>
                                     </TableRow>
@@ -91,18 +91,19 @@ const HomeBody = () => {
                         </Table>
                     </TableContainer>
                 </Grid>
-                <Grid xs={6} display={'flex'} justifyContent={'center'} width={'40vw'}>
+                <Grid item xs={6} display={'flex'} justifyContent={'center'} width={'40vw'}>
                     <Image src={'/../../static/images/example.png'} alt='Curriculum example'
                         style={{
                             width: '36vw',
                             height: 'inherit',
                             boxShadow: ' 0px 0px 5px #FF9551',
                         }}
+                        priority={true}
                         width={500}
                         height={500}
                     />
                 </Grid>
-                <Button variant="contained" color="secondary" href='/user/form' >
+                <Button variant="contained" color="secondary" href='/user/createCurriculum' >
                     Create
                 </Button>
             </Item>

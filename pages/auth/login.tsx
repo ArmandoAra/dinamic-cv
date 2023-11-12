@@ -49,8 +49,10 @@ const LoginPage = () => {
         }
 
 
-        //TODO - navegar a la pagina que el usuario estaba
-        router.replace('/')
+        //TODO - navegar a la pagina del curriculum y cargar los datos del usuario buscando por el email
+        router.push(`/user/profile`)
+
+
 
     }
 

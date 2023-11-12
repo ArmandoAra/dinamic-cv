@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 interface SeedCurriculum {
     name: string;
     surname: string;
+    profession: string;
     age: number;
     telephone: number;
     email: string;
@@ -60,6 +61,7 @@ export const initialData: SeedData = {
         {
             name: 'Armando',
             surname: 'Garcia',
+            profession: 'Artista',
             age: 25,
             telephone: 123456789,
             email: 'armando@email.com',
@@ -76,6 +78,7 @@ export const initialData: SeedData = {
         {
             name: 'Eduardo',
             surname: 'Garcia',
+            profession: 'Artista',
             age: 25,
             telephone: 123456789,
             email: 'eduardo@gmail.com',
@@ -92,6 +95,7 @@ export const initialData: SeedData = {
         {
             name: 'Juan',
             surname: 'Garcia',
+            profession: 'Artista',
             age: 25,
             telephone: 123456789,
             email: 'juan@mail.com',

@@ -3,6 +3,7 @@
 export interface ICurriculumForm {
     name: string;
     surname: string;
+    profession: string;
     age: number;
     telephone: number;
     email: string;

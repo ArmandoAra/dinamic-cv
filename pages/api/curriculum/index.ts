@@ -12,7 +12,7 @@ type Data =
     | InterfaceCurriculum
 
 
-export default function handleEnties(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handleCurriculum(req: NextApiRequest, res: NextApiResponse<Data>) {
 
     switch (req.method) {
         case 'GET':
@@ -27,13 +27,21 @@ export default function handleEnties(req: NextApiRequest, res: NextApiResponse<D
 }
 
 const getCurriculum = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+
+    //Obtener el id de la url
+    const { email } = req.query;
+
+
     //Conexion, pedir los datos y desconectarse
     await db.connectDB();
-    const curriculum = await CurriculumModel.find().sort({ created_at: 'ascending' });
+    const curriculum = await CurriculumModel.findOne({ email });
     await db.disconnectDB();
 
+    if (curriculum) {
+        return res.status(200).json(curriculum)
+    }
 
-    return res.status(200).json(curriculum)
+    return res.status(400).json({ message: 'Curriculum not found' })
 }
 
 // const deleteEntry = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
@@ -50,15 +58,15 @@ const getCurriculum = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
 
 const postCurriculum = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
-    const { name, surname, age, telephone, email,
+    const { name, surname, profession, age, telephone, email,
         country, acts, images, formation,
-        description, skills, workExperience, actualWorkPlace } = req.body;
+        description, skills, workExperience, actualWorkPlace, img } = req.body;
 
     // Aqui manejamos los datos que queremos escribir en el servidor
     const newCurriculum = new CurriculumModel({
-        name, surname, age, telephone, email,
+        name, surname, profession, age, telephone, email,
         country, acts, images, formation,
-        description, skills, workExperience, actualWorkPlace,
+        description, skills, workExperience, actualWorkPlace, img,
         created_at: Date.now(),
     })
 
@@ -71,7 +79,6 @@ const postCurriculum = async (req: NextApiRequest, res: NextApiResponse<Data>) =
         return res.status(201).json(newCurriculum)
     } catch (error) {
         await db.disconnectDB();
-        console.log(error);
         return res.status(400).json({ message: 'Error to save data' })
     }
 

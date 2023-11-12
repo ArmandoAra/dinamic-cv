@@ -14,6 +14,7 @@ interface formData {
     name: string;
     email: string;
     password: string;
+    passwordConfirm: string;
 }
 
 const RegisterPage = () => {
@@ -24,9 +25,18 @@ const RegisterPage = () => {
     const { register, handleSubmit, watch, formState: { errors }, } = useForm<formData>(); //Requerido para usar react-hook-form
     const [errorMessage, setErrorMessage] = useState('')
 
-    const onRegisterForm = async ({ name, email, password }: formData) => {
+    const onRegisterForm = async ({ name, email, password, passwordConfirm }: formData) => {
 
         setShowError(false)
+        if (password !== passwordConfirm) {
+            setShowError(true)
+            setErrorMessage('Passwords do not match')
+            setTimeout(() => {
+                setShowError(false)
+            }, 5000);
+            return;
+        }
+
         const { hasError, message } = await registerUser(name, email, password);
 
         if (hasError) {
@@ -55,7 +65,7 @@ const RegisterPage = () => {
 
                         <Grid item xs={12}>
                             <Chip
-                                label="Choose another User or Email"
+                                label={errorMessage}
                                 color="error"
                                 variant="outlined"
 
@@ -117,13 +127,13 @@ const RegisterPage = () => {
                                 variant="filled"
                                 fullWidth
                                 color='secondary'
-                                {...register('password', {
+                                {...register('passwordConfirm', {
                                     required: 'Password required',
                                     minLength: { value: 6, message: 'Min 6 characteres' }
 
                                 })}
-                                error={!!errors.password}
-                                helperText={errors.password?.message}
+                                error={!!errors.passwordConfirm}
+                                helperText={errors.passwordConfirm?.message}
                             />
 
                         </Grid>
