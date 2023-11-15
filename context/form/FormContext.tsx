@@ -7,6 +7,7 @@ interface ContextProps {
 
     //Methods
     createCurriculum: (name: string, surname: string, profession: string, age: number, telephone: number, email: string, img: string, country: string, acts: string[], images: string[], formation: string, description: string, skills: string[], workExperience: string[], actualWorkPlace: string,) => Promise<{ hasError: boolean, message?: string }>;
+    updateCurriculum: (name: string, surname: string, profession: string, age: number, telephone: number, email: string, img: string, country: string, acts: string[], images: string[], formation: string, description: string, skills: string[], workExperience: string[], actualWorkPlace: string,) => Promise<{ hasError: boolean, message?: string }>;
     getCurriculum: (email: string) => Promise<{ hasError: boolean, message?: string, data: ICurriculumForm }>;
 }
 

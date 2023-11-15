@@ -84,3 +84,33 @@ const postCurriculum = async (req: NextApiRequest, res: NextApiResponse<Data>) =
 
     return res.status(200).json({ message: 'createCurriculum' })
 }
+
+const updateCurriculum = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+
+    const { name, surname, profession, age, telephone, email,
+        country, acts, images, formation,
+        description, skills, workExperience, actualWorkPlace, img, _id } = req.body;
+
+    console.log(req.body)
+    // Aqui manejamos los datos que queremos escribir en el servidor
+    const newCurriculum = new CurriculumModel({
+        name, surname, profession, age, telephone, email,
+        country, acts, images, formation,
+        description, skills, workExperience, actualWorkPlace, img,
+        created_at: Date.now(),
+    })
+
+    // Hacemos la conexion a la base de datos,salvamos los datos y nos desconectamos
+    try {
+        await db.connectDB();
+        await newCurriculum.save();
+        await db.disconnectDB();
+
+        return res.status(201).json(newCurriculum)
+    } catch (error) {
+        await db.disconnectDB();
+        return res.status(400).json({ message: 'Error to save data' })
+    }
+
+    return res.status(200).json({ message: 'createCurriculum' })
+}

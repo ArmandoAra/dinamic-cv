@@ -80,6 +80,45 @@ export const FormProvider = ({ children }: CurriculumProviderProps) => {
 
     }
 
+    const updateCurriculum = async (
+        name: string, surname: string, profession: string, age: number,
+        telephone: number, email: string, country: string,
+        acts: string[], images: string[], formation: string,
+        description: string, skills: string[],
+        workExperience: string[], actualWorkPlace: string,): Promise<{ hasError: boolean; message?: string; }> => {
+
+
+        try {
+
+            const { data } = await cvApi.post<ICurriculumForm>('/curriculum', {
+                name, surname, profession, age, telephone, email,
+                country, acts, images, formation,
+                description, skills, workExperience, actualWorkPlace
+            })
+
+            dispatch({
+                type: 'UPDATE-CURRICULUM',
+                payload: data,
+            })
+            return {
+                hasError: false,
+                message: 'Curriculum actualizado correctamente'
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return {
+                    hasError: true,
+                    message: 'Error al Actualizar el curriculum'
+                }
+            }
+            return {
+                hasError: true,
+                message: 'Error al crear el curriculum'
+            }
+        }
+
+    }
+
     const getCurriculum = async (email: string) => {
         try {
             const { data } = await cvApi.get<ICurriculumForm>(`/curriculum?email=${email}`)
@@ -109,6 +148,7 @@ export const FormProvider = ({ children }: CurriculumProviderProps) => {
             ...state,
             // methods
             createCurriculum,
+            updateCurriculum,
             getCurriculum,
         }}>
             {children}
